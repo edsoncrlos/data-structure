@@ -12,21 +12,21 @@ export class StackVector<T> implements Stack<T> {
 
 	constructor (max: number) {
 		this.max = max;
-		this.top = -1;
+		this.top = 0;
 		this.stack = Array(max).fill(null);
 	}
 
 	public push(element: T) {
 		if (this.top < this.max) {
-			this.top++;
 			this.stack[this.top] = element;
+			this.top++;
 		}
 	}
 
 	public pop() {
-		if (this.top > 0) {
-			const data = this.stack[this.top];
+		if (!this.isEmpty()) {
 			this.top--;
+			const data = this.stack[this.top];
 			return data;
 		}
 		return null;
@@ -40,7 +40,7 @@ export class StackVector<T> implements Stack<T> {
 	}
 
 	public isEmpty() {
-		return this.top === -1;
+		return this.top === 0;
 	}
 
 	public isFull() {
