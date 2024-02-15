@@ -34,7 +34,7 @@ export class StackVector<T> implements Stack<T> {
 
 	public peek() {
 		if (!this.isEmpty()) {
-			return this.stack[this.top];
+			return this.stack[this.top-1];
 		}
 		return null;
 	}

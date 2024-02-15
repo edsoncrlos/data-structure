@@ -52,3 +52,15 @@ test('isEmpty', () => {
 
 	expect(s.isEmpty()).toBe(expected);
 })
+
+test('peek', () => {
+	const s = new StackVector(3);
+	const expected = 3;
+
+	s.push(1);
+	s.push(2);
+	s.push(3);
+
+	const value = s.peek();
+	expect(value).toBe(expected);
+})
