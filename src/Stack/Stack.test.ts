@@ -30,37 +30,54 @@ describe('Stack length', () => {
 	})
 })
 
-test('isFull', () => {
-	const s = new StackVector(3);
-	const expected = true;
+describe('Stack methods', () => {
+	let s: StackVector<number>;
+	beforeEach(() => {
+		s = new StackVector(3);
+	})
 
-	s.push(1);
-	s.push(2);
-	s.push(3);
+	describe('isFull', () => {
+		test('Should isFull return false', () => {
+			s.push(1);
+			s.push(2);
 
-	expect(s.isFull()).toBe(expected);
-})
+			expect(s.isFull()).toBeFalsy();
+		})
 
-test('isEmpty', () => {
-	const s = new StackVector(3);
-	const expected = true;
+		test('Should isFull return true', () => {
+			s.push(1);
+			s.push(2);
+			s.push(3);
 
-	s.push(1);
-	s.push(2);
-	s.pop();
-	s.pop();
+			expect(s.isFull()).toBeTruthy();
+		})
+	})
 
-	expect(s.isEmpty()).toBe(expected);
-})
+	describe('isEmpty', () => {
+		test('Should isEmpty return false', () => {
+			s.push(1);
 
-test('peek', () => {
-	const s = new StackVector(3);
-	const expected = 3;
+			expect(s.isEmpty()).toBeFalsy();
+		})
 
-	s.push(1);
-	s.push(2);
-	s.push(3);
+		test('Should isEmpty return true', () => {
+			s.push(1);
+			s.push(2);
+			s.pop();
+			s.pop();
 
-	const value = s.peek();
-	expect(value).toBe(expected);
+			expect(s.isEmpty()).toBeTruthy();
+		})
+	})
+
+	test('peek', () => {
+		const expected = 3;
+
+		s.push(1);
+		s.push(2);
+		s.push(3);
+
+		const value = s.peek();
+		expect(value).toBe(expected);
+	})
 })
