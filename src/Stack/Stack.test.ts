@@ -70,14 +70,26 @@ describe('Stack methods', () => {
 		})
 	})
 
-	test('peek', () => {
-		const expected = 3;
+	describe('peek', () => {
+		test('Should return of value top of stack', () => {
+			const expected = 3;
 
-		s.push(1);
-		s.push(2);
-		s.push(3);
+			s.push(1);
+			s.push(2);
+			s.push(3);
 
-		const value = s.peek();
-		expect(value).toBe(expected);
+			const value = s.peek();
+			expect(value).toBe(expected);
+		})
+
+		test('Should return null when stack is empty', () => {
+			expect(s.peek()).toBeNull();
+		})
+	})
+
+	describe('pop', () => {
+		test('Should return null when stack is empty', () => {
+			expect(s.pop()).toBeNull();
+		})
 	})
 })
