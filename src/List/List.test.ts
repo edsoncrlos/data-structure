@@ -90,3 +90,25 @@ describe('isEmpty', () => {
 		expect(l.isEmpty()).toBeFalsy();
 	})
 })
+
+describe('list values', () => {
+	test('listFirst', () => {
+		l.insertLast(4);
+
+		expect(l.listFirst()).toBe(4);
+	})
+
+	test('listNext', () => {
+		l.insertLast(4);
+		l.insertLast(2);
+		l.insertLast(3);
+		l.insertLast(1);
+
+		expect(l.listFirst()).toBe(4);
+		expect(l.listNext()).toBe(2);
+		expect(l.listNext()).toBe(3);
+		expect(l.listNext()).toBe(1);
+		expect(l.listNext()).toBeNull;
+		expect(l.listFirst()).toBeNull;
+	})
+})

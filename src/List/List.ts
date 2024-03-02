@@ -31,6 +31,8 @@ interface List<T> {
 	removeLast(): T | null;
 	getFirst(): T | null;
 	getLast(): T | null;
+	listFirst(): T | null;
+	listNext(): T | null;
 	remove(value: T): T | null;
 	search(value: T): T | null;
 	isEmpty(): boolean;
@@ -38,9 +40,11 @@ interface List<T> {
 
 export class singlyLinkedList<T> implements List<T> {
 	private first: Node<T>;
+	private pos: Node<T>;
 
 	constructor() {
 		this.first = null;
+		this.pos = null;
 	}
 
 	public insertFirst(value: T) {
@@ -117,6 +121,23 @@ export class singlyLinkedList<T> implements List<T> {
 				node = node.getNext();
 			}
 			return node?.getValue()!;
+		}
+		return null;
+	}
+
+	public listFirst() {
+		if (this.first != null) {
+			this.pos = this.first;
+			return this.first.getValue();
+		}
+		return null;
+	}
+
+	public listNext() {
+		this.pos = this.pos?.getNext()!;
+
+		if (this.pos != null) {
+			return this.pos.getValue();
 		}
 		return null;
 	}
