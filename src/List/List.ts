@@ -33,6 +33,7 @@ interface List<T> {
 	getLast(): T | null;
 	remove(value: T): T | null;
 	search(value: T): T | null;
+	isEmpty(): boolean;
 }
 
 export class singlyLinkedList<T> implements List<T> {
@@ -164,5 +165,12 @@ export class singlyLinkedList<T> implements List<T> {
 			return data;
 		}
 		return null;
+	}
+
+	public isEmpty(): boolean {
+		if (this.first != null) {
+			return false;
+		}
+		return true;
 	}
 }

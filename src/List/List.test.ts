@@ -79,3 +79,14 @@ test('search', () => {
 	expect(l.search(3)).toBeNull();
 	expect(l.search(6)).toBe(6);
 })
+
+describe('isEmpty', () => {
+	test('Should be return true', () => {
+		expect(l.isEmpty()).toBeTruthy();
+	})
+
+	test('Should be return false', () => {
+		l.insertFirst(3);
+		expect(l.isEmpty()).toBeFalsy();
+	})
+})
