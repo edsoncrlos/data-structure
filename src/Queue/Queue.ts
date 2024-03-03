@@ -1,13 +1,9 @@
+import { Queue } from "types/Queue";
+import { List } from "types/List";
 import { singlyLinkedList } from "../List/List";
 
-interface Queue<T> {
-	enqueue(value: T): void,
-	dequeue(): T | null;
-	peek(): T | null;
-}
-
 export class QueueLinkedList<T> implements Queue<T> {
-	private list: singlyLinkedList<T>;
+	private list: List<T>;
 
 	constructor() {
 		this.list = new singlyLinkedList<T>();

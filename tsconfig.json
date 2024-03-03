@@ -9,6 +9,12 @@
     "module": "CommonJS",
     "rootDir": "./src",
 
+	"typeRoots": ["./node_modules/@types", "./types"],
+
+	"paths": {
+		"types/*": ["./types/*"],
+	},
+
     /* JavaScript Support */
 
     /* Emit */
@@ -24,6 +30,6 @@
 
     /* Completeness */
 
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }
