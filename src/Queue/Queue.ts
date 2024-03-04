@@ -20,4 +20,12 @@ export class QueueLinkedList<T> implements Queue<T> {
 	public peek() {
 		return this.list.getFirst();
 	}
+
+	public isEmpty(): boolean {
+		return this.list.isEmpty();
+	}
+
+	isFull(): boolean {
+		return false;
+	}
 }
