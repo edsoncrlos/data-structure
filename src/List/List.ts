@@ -28,34 +28,33 @@ class NodeSingly<T> {
 
 export class singlyLinkedList<T> implements List<T> {
 	private first: Node<T>;
+	private last: Node<T>;
 	private pos: Node<T>;
 
 	constructor() {
-		this.first = null;
-		this.pos = null;
+		this.first = this.last = this.pos = null;
 	}
 
 	public insertFirst(value: T) {
 		const data = new NodeSingly(value);
 
 		if (this.first != null) {
-			data.setNext(this.first)
+			data.setNext(this.first);
+			this.first = data;
+		} else {
+			this.first = this.last = data;
 		}
-		this.first = data;
 	}
 
 	public insertLast(value: T) {
 		const data = new NodeSingly(value);
 
-		if (this.first != null) {
-			let node: Node<T> = this.first;
-
-			while (node?.getNext() != null) {
-				node = node.getNext();
-			}
-			node?.setNext(data);
+		if (this.first != null && this.last != null) {
+			this.last.setNext(data);
+			this.last = this.last.getNext();
 		} else {
 			this.first = data;
+			this.last = this.first;
 		}
 	}
 
@@ -63,6 +62,10 @@ export class singlyLinkedList<T> implements List<T> {
 		if (this.first != null) {
 			const data = this.first.getValue();
 			this.first = this.first.getNext();
+
+			if (this.first == null) {
+				this.last = this.first;
+			}
 			return data;
 		}
 		return null;
@@ -83,11 +86,12 @@ export class singlyLinkedList<T> implements List<T> {
 
 				const data = next?.getValue()!;
 				prev?.setNext(null);
+				this.last = prev;
 
 				return data;
 			} else {
 				const data = this.first.getValue();
-				this.first = null;
+				this.first = this.last = null;
 				return data;
 			}
 		}
@@ -102,13 +106,8 @@ export class singlyLinkedList<T> implements List<T> {
 	}
 
 	public getLast() {
-		if (this.first != null) {
-			let node: Node<T> = this.first;
-
-			while (node?.getNext() != null) {
-				node = node.getNext();
-			}
-			return node?.getValue()!;
+		if (this.last != null) {
+			return this.last.getValue();
 		}
 		return null;
 	}
