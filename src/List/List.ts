@@ -36,24 +36,24 @@ export class singlyLinkedList<T> implements List<T> {
 	}
 
 	public insertFirst(value: T) {
-		const data = new NodeSingly(value);
+		const newNode = new NodeSingly(value);
 
 		if (this.first != null) {
-			data.setNext(this.first);
-			this.first = data;
+			newNode.setNext(this.first);
+			this.first = newNode;
 		} else {
-			this.first = this.last = data;
+			this.first = this.last = newNode;
 		}
 	}
 
 	public insertLast(value: T) {
-		const data = new NodeSingly(value);
+		const newNode = new NodeSingly(value);
 
 		if (this.first != null && this.last != null) {
-			this.last.setNext(data);
+			this.last.setNext(newNode);
 			this.last = this.last.getNext();
 		} else {
-			this.first = data;
+			this.first = newNode;
 			this.last = this.first;
 		}
 	}
