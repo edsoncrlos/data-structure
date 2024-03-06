@@ -108,7 +108,6 @@ describe('list values', () => {
 		expect(l.listNext()).toBe(2);
 		expect(l.listNext()).toBe(3);
 		expect(l.listNext()).toBe(1);
-		expect(l.listNext()).toBeNull;
-		expect(l.listFirst()).toBeNull;
+		expect(l.listNext()).toBeNull();
 	})
 })
