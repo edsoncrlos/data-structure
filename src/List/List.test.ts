@@ -92,10 +92,15 @@ describe('isEmpty', () => {
 })
 
 describe('list values', () => {
-	test('listFirst', () => {
-		l.insertLast(4);
+	describe('listFirst', () => {
+		test('Should return first value', () => {
+			l.insertLast(4);
+			expect(l.listFirst()).toBe(4);
+		})
 
-		expect(l.listFirst()).toBe(4);
+		test('Should return null', () => {
+			expect(l.listFirst()).toBeNull();
+		})
 	})
 
 	test('listNext', () => {
